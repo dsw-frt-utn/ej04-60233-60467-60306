@@ -28,11 +28,16 @@ public class Persistencia {
         Sucursal s1 = sucursales.get(0);
         Sucursal s2 = sucursales.get(1);
         
-        VehiculoElectrico v1 = new VehiculoElectrico("AE123FG", "Renault", "Kangoo E-Tech", 2020, 1000, s1, 16);
-        VehiculoElectrico v2 = new VehiculoElectrico("AF456HI", "Ford", "E-Transit", 2021, 1300, s2, 16);
+        Marca m1=new Marca("Fiat","Italia");
+        Marca m2=new Marca("Ford","EEUU");
+        Marca m3=new Marca("Toyota","Japon");
+        Marca m4=new Marca("Audi","Alemania");
+        
+        VehiculoElectrico v1 = new VehiculoElectrico("AE123FG", m1, "Kangoo E-Tech", 2020, 1000, s1, 16);
+        VehiculoElectrico v2 = new VehiculoElectrico("AF456HI", m2, "E-Transit", 2021, 1300, s2, 16);
 
-        VehiculoCombustible v3 = new VehiculoCombustible("AC789JK", "Iveco", "Daily", 2023, 1200, s1, 8, 1.5);
-        VehiculoCombustible v4 = new VehiculoCombustible("AD321LM", "Mercedes", "Sprinter", 2020, 1200, s2, 7, 1);
+        VehiculoCombustible v3 = new VehiculoCombustible("AC789JK",m3, "Daily", 2023, 1200, s1, 8, 1.5);
+        VehiculoCombustible v4 = new VehiculoCombustible("AD321LM",m4, "Sprinter", 2020, 1200, s2, 7, 1);
         
         vehiculos.add(v1);
         vehiculos.add(v2);
@@ -50,9 +55,22 @@ public class Persistencia {
                 .findFirst();
     }
     
+    public static ArrayList<Sucursal> getSucursales(){
+        return sucursales;
+    }
+    
     public static void inicializar(){
         inicializarResponsables();
         inicializarSucursales();
         inicializarVehiculos();
     }
+    
+    public static boolean registrarVehiculo(Vehiculo vel){
+        return vehiculos.add(vel);
+    }
+    
+    public static boolean eliminarVehiculo(Vehiculo vel){
+        return vehiculos.removeIf(v->v.getPatente().equals(vel.getPatente())); 
+    }
+    
 }
