@@ -25,5 +25,6 @@ public class VehiculoCombustible extends Vehiculo {
         double calculoLitrosExtra = (kilometros / 15) * litrosExtraAplicables; //Calcula los litros extra basados en la distancia recorrida y el consumo adicional por cada 100 km
         double total = (kilometros / kilometrosPorLitro) + calculoLitrosExtra; //Calcula el consumo total en litros basado en la distancia recorrida y el rendimiento del vehículo
         return total;
+        
     }
 }

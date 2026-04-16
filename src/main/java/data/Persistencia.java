@@ -46,22 +46,30 @@ public class Persistencia {
         sucursales.add(s2);
         sucursales.add(s3);
     }
-public static Optional<Sucursal> getSucursal(String codigo) {
-    return sucursales.stream()
-            .filter(s -> s.getCodigo().equals(codigo))
-            .findFirst();
-}
-public static Optional<Marca> getMarca (String nombre) {
-    return marcas.stream()
-            .filter(m -> m.getNombre().equalsIgnoreCase(nombre))
-            .findFirst();
-}
-public static void agregarVehiculo(Vehiculo vehiculo) {
-    vehiculos.add(vehiculo);
-    System.out.println("Vehiculo agregado: "+ vehiculo.getPatente() + " info: "+vehiculo.getAnio() + " "+ vehiculo.getTipo());
-    
-    System.out.println("Vehiculos : "+ vehiculos.size());
-}
+
+    private static void inicializarVehiculos() {
+        Sucursal s1 = sucursales.get(0);
+        Sucursal s2 = sucursales.get(1);
+        
+        Marca m1=new Marca("Fiat","Italia");
+        Marca m2=new Marca("Ford","EEUU");
+        Marca m3=new Marca("Toyota","Japon");
+        Marca m4=new Marca("Audi","Alemania");
+        
+        VehiculoElectrico v1 = new VehiculoElectrico("AE123FG", m1, "Kangoo E-Tech", 2020, 1000, s1, 16);
+        VehiculoElectrico v2 = new VehiculoElectrico("AF456HI", m2, "E-Transit", 2021, 1300, s2, 16);
+
+        VehiculoCombustible v3 = new VehiculoCombustible("AC789JK",m3, "Daily", 2023, 1200, s1, 8, 1.5);
+        VehiculoCombustible v4 = new VehiculoCombustible("AD321LM",m4, "Sprinter", 2020, 1200, s2, 7, 1);
+        
+
+
+
+        vehiculos.add(v1);
+        vehiculos.add(v2);
+        vehiculos.add(v3);
+        vehiculos.add(v4);
+    }
 
     public static ArrayList<Vehiculo> getVehiculos() {
         return vehiculos;
@@ -72,13 +80,25 @@ public static void agregarVehiculo(Vehiculo vehiculo) {
                 .filter(v -> v.getPatente().equals(patente))
                 .findFirst();
     }
-    public static void eliminarVehiculo(String patente) {
-    vehiculos.removeIf(v -> v.getPatente().equals(patente));
-}
-
-    public static void inicializar() {
+    
+    public static ArrayList<Sucursal> getSucursales(){
+        return sucursales;
+    }
+    
+    public static void inicializar(){
         inicializarResponsables();
         inicializarSucursales();
+        inicializarVehiculos();
         inicializarMarcas();
+
     }
+    
+    public static boolean registrarVehiculo(Vehiculo vel){
+        return vehiculos.add(vel);
+    }
+    
+    public static boolean eliminarVehiculo(Vehiculo vel){
+        return vehiculos.removeIf(v->v.getPatente().equals(vel.getPatente())); 
+    }
+    
 }
