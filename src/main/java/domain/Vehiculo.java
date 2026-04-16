@@ -8,10 +8,11 @@ public abstract class Vehiculo {
     protected double capacidadCarga;
     protected Sucursal sucursal;
     private VehiculoTipo tipo;
+    private Marca marcaVehiculo;
 
     public Vehiculo(VehiculoTipo tipo, String patente, Marca marca, String modelo, int anio, double capacidadCarga, Sucursal sucursal) {
         this.patente = patente;
-        this.marca = marca;
+        this.marcaVehiculo = marcaVehiculo;
         this.modelo = modelo;
         this.anio = anio;
         this.capacidadCarga = capacidadCarga;
