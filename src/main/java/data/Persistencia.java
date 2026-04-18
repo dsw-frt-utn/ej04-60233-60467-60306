@@ -74,4 +74,18 @@ public class Persistencia {
         inicializarSucursales();
         inicializarVehiculos();
     }
+    
+    public static boolean registrarVehiculo(Vehiculo vel){
+        return vehiculos.add(vel);
+    }
+    
+    public static boolean eliminarVehiculo(Vehiculo vel){
+        return vehiculos.removeIf(v->v.getPatente().equals(vel.getPatente())); 
+    }
+    
+    public static ArrayList<Sucursal> getSucursales(){
+        return sucursales;
+    }
+    
+    
 }
