@@ -4,13 +4,11 @@ import data.Persistencia;
 import java.util.InvalidPropertiesFormatException;
 import views.AgregarVehiculoView;
 import views.ListarVehiculosView;
-
+import views.MenuPrincipalView;
 public class Program {
     public static void main(String[] args) throws IllegalArgumentException, InvalidPropertiesFormatException {
         Persistencia.inicializar();
-        ListarVehiculosView view = new ListarVehiculosView();
-        view.setVisible(true);
-        AgregarVehiculoView vent2 = new AgregarVehiculoView();
-        vent2.setVisible(true);
+        MenuPrincipalView m1=new MenuPrincipalView();
+        m1.setVisible(true);
     }
 }
